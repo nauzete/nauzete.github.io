@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portafolio | NAUZET C.R</title>
+  <style>
+    :root {
+      --color-bg-base: #0f172a;
+      --color-bg-elevated: #020617;
+      --color-bg-surface: #1e293b;
+      --color-bg-muted: #334155;
+      --color-text-primary: #f1f5f9;
+      --color-text-secondary: #cbd5e1;
+      --color-text-muted: #94a3b8;
+      --color-accent: #38bdf8;
+      --color-accent-hover: #0ea5e9;
+      --color-card-bg: #ffffff;
+      --color-card-text: #0f172a;
+      --color-card-border: #e2e8f0;
+      --color-section-light: #f8fafc;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+      background-color: #ffffff;
+      color: var(--color-card-text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, var(--color-bg-base) 0%, var(--color-bg-surface) 100%);
+      color: var(--color-text-primary);
+      padding: 100px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        radial-gradient(circle at 20% 50%, rgba(56, 189, 248, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(56, 189, 248, 0.08) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-text h1 {
+      font-size: 52px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #f1f5f9 0%, #cbd5e1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-text .subtitle {
+      font-size: 20px;
+      color: var(--color-text-secondary);
+      margin-bottom: 32px;
+      max-width: 600px;
+      line-height: 1.7;
+    }
+
+    .hero-text .tag {
+      display: inline-block;
+      padding: 6px 14px;
+      background-color: rgba(56, 189, 248, 0.15);
+      color: var(--color-accent);
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 20px;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      background-color: var(--color-accent);
+      color: var(--color-bg-base);
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 14px rgba(56, 189, 248, 0.3);
+    }
+
+    .btn:hover {
+      background-color: var(--color-accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(56, 189, 248, 0.4);
+    }
+
+    .hero-avatar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .avatar-placeholder {
+      width: 280px;
+      height: 280px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.1) 0%, rgba(56, 189, 248, 0.05) 100%);
+      border: 2px dashed rgba(56, 189, 248, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      color: var(--color-text-muted);
+      text-align: center;
+      padding: 20px;
+      backdrop-filter: blur(10px);
+    }
+
+    /* Section Styles */
+    .section {
+      padding: 90px 0;
+    }
+
+    .section-light {
+      background-color: var(--color-section-light);
+    }
+
+    .section-title {
+      font-size: 38px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--color-bg-base);
+      letter-spacing: -0.01em;
+    }
+
+    .section-subtitle {
+      font-size: 18px;
+      color: #64748b;
+      margin-bottom: 50px;
+      max-width: 700px;
+    }
+
+    /* About Section */
+    #sobre-mi p {
+      font-size: 18px;
+      line-height: 1.8;
+      color: #475569;
+      margin-bottom: 20px;
+      max-width: 900px;
+    }
+
+    /* Projects Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .project-card {
+      background-color: var(--color-card-bg);
+      border: 1px solid var(--color-card-border);
+      border-radius: 16px;
+      padding: 32px;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--color-accent) 0%, var(--color-accent-hover) 100%);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    .project-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
+      border-color: rgba(56, 189, 248, 0.3);
+    }
+
+    .project-card h3 {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: var(--color-bg-base);
+    }
+
+    .project-card p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: #475569;
+      margin-bottom: 16px;
+    }
+
+    .project-card .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    .tech-tag {
+      padding: 6px 12px;
+      background-color: rgba(56, 189, 248, 0.1);
+      color: var(--color-accent-hover);
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    /* Contact Section */
+    #contacto {
+      background: linear-gradient(135deg, var(--color-bg-base) 0%, var(--color-bg-surface) 100%);
+      color: var(--color-text-primary);
+    }
+
+    #contacto .section-title {
+      color: var(--color-text-primary);
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      max-width: 600px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .contact-item:hover {
+      background-color: rgba(255, 255, 255, 0.08);
+      border-color: rgba(56, 189, 248, 0.4);
+      transform: translateX(8px);
+    }
+
+    .contact-item strong {
+      color: var(--color-accent);
+      font-size: 16px;
+      min-width: 100px;
+    }
+
+    .contact-item span {
+      color: var(--color-text-secondary);
+      font-size: 16px;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: var(--color-bg-elevated);
+      color: var(--color-text-muted);
+      text-align: center;
+      padding: 30px 0;
+      font-size: 14px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 968px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .hero-text h1 {
+        font-size: 42px;
+      }
+
+      .hero-avatar {
+        order: -1;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        padding: 60px 0;
+      }
+
+      .hero-text h1 {
+        font-size: 36px;
+      }
+
+      .hero-text .subtitle {
+        font-size: 18px;
+      }
+
+      .section {
+        padding: 60px 0;
+      }
+
+      .section-title {
+        font-size: 32px;
+      }
+
+      .avatar-placeholder {
+        width: 220px;
+        height: 220px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <span class="tag">Portafolio Personal</span>
+          <h1>NAUZET CASIMIRO REYES</h1>
+          <p class="subtitle">
+            Estudiante de Desarrollo de Aplicaciones Multiplataforma | 
+            Apasionado por la tecnología y el desarrollo de software | 
+            En búsqueda de oportunidades en el sector TI
+          </p>
+          <a href="#contacto" class="btn">Contactar</a>
+        </div>
+        <div class="hero-avatar">
+          <div class="avatar-placeholder">
+            [TU FOTO O AVATAR]
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="sobre-mi" class="section">
+      <div class="container">
+        <h2 class="section-title">Sobre mí</h2>
+        <p class="section-subtitle">Conoce más acerca de mi formación e intereses profesionales</p>
+        
+        <p>
+          Soy Nauzet, estudiante de 1º Desarrollo de Aplicaciones Multiplataforma. Actualmente estoy 
+          desarrollando mis habilidades en áreas como programación, desarrollo web, 
+          administración de sistemas y gestión de bases de datos.
+        </p>
+        <p>
+          Estudiante de Desarrollo de Aplicaciones Multiplataforma (DAM) proactivo y autodidacta, con experiencia práctica en sistemas, desarrollo full-stack y virtualización, obtenida a través de proyectos personales y un homelab propio.
+        </p>
+        <p>
+          Este portafolio recoge algunos de los proyectos más representativos en los que he 
+          trabajado, mostrando tanto proyectos reales como conceptos y prototipos desarrollados 
+          durante mi formación.
+        </p>
+      </div>
+    </section>
+
+    <section id="proyectos" class="section section-light">
+      <div class="container">
+        <h2 class="section-title">Proyectos destacados</h2>
+        <p class="section-subtitle">Trabajos y desarrollos que demuestran mis habilidades técnicas</p>
+        
+        <div class="projects-grid">
+          <article class="project-card">
+            <h3>ACorsaHostingES</h3>
+            <p>
+              Servicio de hosting especializado en servidores dedicados para Assetto Corsa, 
+              un simulador de conducción profesional. La plataforma ofrece infraestructura 
+              optimizada para comunidades de simracing que organizan campeonatos y eventos 
+              competitivos online.
+            </p>
+            <p>
+              El proyecto incluye gestión de servidores Linux, configuración de servicios web, 
+              administración de bases de datos para almacenar tiempos y clasificaciones, y 
+              desarrollo de APIs para integración con sistemas de timing en tiempo real.
+            </p>
+            <div class="tech-stack">
+              <span class="tech-tag">Linux Server</span>
+              <span class="tech-tag">Web Hosting</span>
+              <span class="tech-tag">API REST</span>
+              <span class="tech-tag">Gestión de Comunidades</span>
+              <span class="tech-tag">Bases de Datos</span>
+              <span class="tech-tag">Server Hosting</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <h3>TaskFlow Manager</h3>
+            <p>
+              Aplicación web de gestión de tareas y proyectos académicos diseñada para estudiantes 
+              y equipos de trabajo. Permite organizar entregas, dividir proyectos en fases, asignar 
+              prioridades y visualizar el progreso mediante tableros Kanban.
+            </p>
+            <p>
+              El sistema incluye autenticación de usuarios, gestión de equipos colaborativos, 
+              sistema de notificaciones para fechas límite y exportación de reportes en formato PDF. 
+              Desarrollado con enfoque en usabilidad y diseño responsive.
+            </p>
+            <div class="tech-stack">
+              <span class="tech-tag">HTML5</span>
+              <span class="tech-tag">CSS3</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">Responsive Design</span>
+              <span class="tech-tag">UX/UI</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <h3>EcoMetrics Dashboard</h3>
+            <p>
+              Panel de visualización de datos ambientales para centros educativos y pequeñas 
+              organizaciones. Muestra métricas de consumo energético, gestión de residuos, 
+              emisiones de CO₂ y objetivos de sostenibilidad mediante gráficos interactivos.
+            </p>
+            <p>
+              El proyecto implementa conexión con sensores IoT para monitorización en tiempo real, 
+              almacenamiento histórico de datos, generación de informes automatizados y sistema 
+              de alertas configurables. Incluye administración multiusuario con diferentes niveles 
+              de acceso.
+            </p>
+            <div class="tech-stack">
+              <span class="tech-tag">Data Visualization</span>
+              <span class="tech-tag">IoT Integration</span>
+              <span class="tech-tag">SQL Database</span>
+              <span class="tech-tag">Responsive Web</span>
+              <span class="tech-tag">Analytics</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="section">
+      <div class="container">
+        <h2 class="section-title">Contacto</h2>
+        <p class="section-subtitle">¿Tienes algún proyecto en mente? Hablemos</p>
+        
+        <div class="contact-info">
+          <div class="contact-item">
+            <strong>Email:</strong>
+            <span>nauzetcasimiro@gmail.com</span>
+          </div>
+          <div class="contact-item">
+            <strong>GitHub:</strong>
+            <span><a href="https://github.com/nauzete">nauzete</a></span>
+          </div>
+          <div class="contact-item">
+            <strong>LinkedIn:</strong>
+            <span><a href="https://www.linkedin.com/in/nauzetcr/">nauzetcr</a></span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 NAUZET CASIMIRO REYES - Portafolio Personal</p>
+      <p style="margin-top: 8px; font-size: 13px;">Desarrollado con HTML y CSS - Alojado en GitHub Pages</p>
+    </div>
+  </footer>
+</body>
+</html>
